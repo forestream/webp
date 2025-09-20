@@ -1,14 +1,11 @@
-import { Input } from "@devup-ui/react";
-
-function getImage(formData: FormData) {
-  const data = Object.fromEntries(formData);
-  console.log(data);
-}
+import { Button, Input } from "@devup-ui/react";
+import { getImage } from "@/actions";
 
 export default function Home() {
   return (
     <form action={getImage}>
-      <Input type="file" multiple accept="image/png, image/jpeg" />
+      <Input type="file" multiple name="image" accept="image/png, image/jpeg" />
+      <Button type="submit">Submit</Button>
     </form>
   );
 }
