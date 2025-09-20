@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-
 export const metadata: Metadata = {
   title: "webp converter",
   description: "convert images to webp",
@@ -13,9 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
