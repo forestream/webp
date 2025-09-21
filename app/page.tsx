@@ -1,11 +1,19 @@
-import { Button, Input } from "@devup-ui/react";
-import { getImage } from "@/actions";
+import { Button } from "@devup-ui/react";
+import { Form } from "./_components/Form";
+import { FileProvider } from "./_components/FileProvider";
+import { FileInput } from "./_components/FileInput";
+import { FileList } from "./_components/FileList";
+import { FileOutputList } from "./_components/FileOutputList";
 
 export default function Home() {
   return (
-    <form action={getImage}>
-      <Input type="file" multiple name="image" accept="image/png, image/jpeg" />
-      <Button type="submit">Submit</Button>
-    </form>
+    <FileProvider>
+      <Form>
+        <FileInput />
+        <Button type="submit">Submit</Button>
+        <FileList />
+        <FileOutputList />
+      </Form>
+    </FileProvider>
   );
 }
