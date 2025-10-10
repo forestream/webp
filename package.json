@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@devup-ui/react": "^1.0.18",
+    "@devup-ui/react": "^1.0.20",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
