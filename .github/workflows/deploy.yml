@@ -22,6 +22,6 @@ jobs:
             mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
             cd ${{ secrets.SERVER_DEPLOY_PATH }}
             git clone ${{ vars.REPO_URL }} . || git pull origin main
-            bun install
-            bun run build
-            bun run start
+            pnpm install
+            pnpm run build
+            pnpm run start
