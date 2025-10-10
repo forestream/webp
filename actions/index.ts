@@ -4,6 +4,7 @@ import { exec } from "child_process";
 import { join } from "path";
 import { mkdir, writeFile } from "fs/promises";
 import { logError } from "@/utils/logger";
+import os from "os";
 
 export async function convertImages(formData: FormData) {
   const images = formData.getAll("image") as File[];
@@ -43,23 +44,46 @@ export async function convertImages(formData: FormData) {
               "cwebp.exe",
             );
 
-            exec(
-              `"${cwebpPath}" -q 80 "${filepath}" -o "${webpPath}"`,
-              async (error, stdout, stderr) => {
-                if (error) {
-                  await logError(
-                    error,
-                    `Image conversion failed: ${originalName}`,
-                  );
-                  return;
-                }
-                console.log(stdout);
-                console.log(stderr);
+            const platform = os.platform();
+            if (platform === "win32") {
+              exec(
+                `"${cwebpPath}" -q 80 "${filepath}" -o "${webpPath}"`,
+                async (error, stdout, stderr) => {
+                  if (error) {
+                    await logError(
+                      error,
+                      `Image conversion failed: ${originalName}`,
+                    );
+                    return;
+                  }
+                  console.log(stdout);
+                  console.log(stderr);
 
-                filenames[index] = webpName;
-                resolve(void 0);
-              },
-            );
+                  filenames[index] = webpName;
+                  resolve(void 0);
+                },
+              );
+            } else if (platform === "linux") {
+              exec(
+                `wine "${cwebpPath}" -q 80 "${filepath}" -o "${webpPath}"`,
+                async (error, stdout, stderr) => {
+                  if (error) {
+                    await logError(
+                      error,
+                      `Image conversion failed: ${originalName}`,
+                    );
+                    return;
+                  }
+                  console.log(stdout);
+                  console.log(stderr);
+
+                  filenames[index] = webpName;
+                  resolve(void 0);
+                },
+              );
+            } else {
+              console.error(`Unsupported platform: ${platform}`);
+            }
           }
         }),
     ),
