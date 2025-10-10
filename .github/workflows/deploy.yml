@@ -22,6 +22,8 @@ jobs:
             mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
             cd ${{ secrets.SERVER_DEPLOY_PATH }}
             git clone ${{ vars.REPO_URL }} . || git pull origin main
+            export PNPM_HOME="$HOME/.local/share/pnpm"
+            export PATH="$PNPM_HOME:$PATH"
             pnpm install
             pnpm run build
             nohup pnpm run start > output.log 2>&1 &
