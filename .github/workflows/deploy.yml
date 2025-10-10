@@ -24,4 +24,4 @@ jobs:
             git clone ${{ vars.REPO_URL }} . || git pull origin main
             pnpm install
             pnpm run build
-            pnpm run start
+            nohup pnpm run start > output.log 2>&1 &
