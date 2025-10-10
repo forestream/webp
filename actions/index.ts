@@ -3,6 +3,7 @@
 import { exec } from "child_process";
 import { join } from "path";
 import { mkdir, writeFile } from "fs/promises";
+import { logError } from "@/utils/logger";
 
 export async function convertImages(formData: FormData) {
   const images = formData.getAll("image") as File[];
@@ -46,7 +47,10 @@ export async function convertImages(formData: FormData) {
               `"${cwebpPath}" -q 80 "${filepath}" -o "${webpPath}"`,
               async (error, stdout, stderr) => {
                 if (error) {
-                  console.error(error);
+                  await logError(
+                    error,
+                    `Image conversion failed: ${originalName}`,
+                  );
                   return;
                 }
                 console.log(stdout);
