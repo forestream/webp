@@ -27,13 +27,14 @@ export async function convertImages(formData: FormData) {
           const timestamp = Date.now();
           const originalName = image.name;
           const filename = `${timestamp}-${originalName.split(".")[0]}`;
-          const filepath = join(uploadsDir, filename);
+          const filepath = join(uploadsDir, originalName);
           await writeFile(filepath, buffer);
 
           // Convert to WebP if it's an image
           const extension = originalName.split(".").pop();
           if (["jpg", "jpeg", "png"].includes(extension?.toLowerCase() || "")) {
-            const webpPath = join(outputDir, `${filename}.webp`);
+            const webpName = `${filename}.webp`;
+            const webpPath = join(outputDir, webpName);
             const cwebpPath = join(
               process.cwd(),
               "converter",
@@ -51,7 +52,7 @@ export async function convertImages(formData: FormData) {
                 console.log(stdout);
                 console.log(stderr);
 
-                filenames[index] = filename;
+                filenames[index] = webpName;
                 resolve(void 0);
               },
             );

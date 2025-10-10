@@ -8,7 +8,7 @@ export async function GET(
 ) {
   try {
     const { image } = await params;
-    const path = join(process.cwd(), "output", image + ".webp");
+    const path = join(process.cwd(), "output", image);
     const webpBuffer = await openAsBlob(path);
     return new NextResponse(webpBuffer, {
       headers: {
