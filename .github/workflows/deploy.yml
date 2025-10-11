@@ -19,15 +19,16 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
+            cd ${{ secrets.SERVER_DEPLOY_PATH }}
+
             PM2_BIN=$(which pm2)
+            echo "PM2_BIN: $PM2_BIN"
             export PATH="$HOME/.local/share/pnpm:$PATH"
             
             APP_NAME="webp"
             $PM2_BIN stop "$APP_NAME" || true
             $PM2_BIN delete "$APP_NAME" || true
-
-            mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
-            cd ${{ secrets.SERVER_DEPLOY_PATH }}
 
             echo "📦 최신 코드 가져오는 중..."
             git clone ${{ vars.REPO_URL }} . || git pull origin main
