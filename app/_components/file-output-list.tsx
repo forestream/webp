@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useFile } from "./FileProvider";
+import { useFile } from "./file-provider";
 
 export function FileOutputList() {
   const { convertedFiles } = useFile();

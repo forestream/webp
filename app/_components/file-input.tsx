@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@devup-ui/react";
-import { useFile } from "./FileProvider";
+import { useFile } from "./file-provider";
 
 export function FileInput() {
   const { setFiles } = useFile();

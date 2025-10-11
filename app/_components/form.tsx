@@ -1,6 +1,6 @@
 "use client";
 
-import { useFile } from "./FileProvider";
+import { useFile } from "./file-provider";
 
 export function Form(props: React.ComponentProps<"form">) {
   const { files, setConvertedFiles } = useFile();

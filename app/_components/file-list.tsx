@@ -1,6 +1,6 @@
 "use client";
 
-import { useFile } from "./FileProvider";
+import { useFile } from "./file-provider";
 
 export function FileList() {
   const { files } = useFile();
