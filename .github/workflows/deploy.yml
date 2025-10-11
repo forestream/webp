@@ -20,6 +20,7 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           script: |
             echo "PATH: $PATH"
+            echo "HOME: $HOME"
             export PATH="$HOME/.local/share/pnpm:$PATH"
             mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
             cd ${{ secrets.SERVER_DEPLOY_PATH }}
