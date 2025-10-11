@@ -23,7 +23,7 @@ jobs:
             pkill -f "next start" || true
             pkill -f "node.*.next" || true
             pkill -f "node.*server.js" || true
-            sleep 1
+            sleep 3
             echo "✅ 기존 서버 종료 완료"
 
 
