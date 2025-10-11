@@ -41,6 +41,6 @@ jobs:
 
             echo "🚀 새 서버 실행 중..."
             export PATH="$HOME/.local/share/pnpm:$PATH"
-            pm2 start pnpm --name "$APP_NAME" -- start --watch
+            pm2 start pnpm --name "$APP_NAME" -- start
 
             echo "✅ 배포 완료"
