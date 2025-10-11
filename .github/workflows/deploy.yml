@@ -23,11 +23,11 @@ jobs:
 
             mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
             cd ${{ secrets.SERVER_DEPLOY_PATH }}
-            rm -rf df
-
+            
             APP_NAME="webp"
             pm2 stop "$APP_NAME" || true
             pm2 delete "$APP_NAME" || true
+            rm -rf df .next
 
             echo "📦 최신 코드 가져오는 중..."
             git clone ${{ vars.REPO_URL }} . || git pull origin main
