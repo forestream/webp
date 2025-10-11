@@ -19,10 +19,12 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            npm install -g pm2
+            PM2_BIN=$(which pm2)
+            export PATH="$HOME/.local/share/pnpm:$PATH"
+            
             APP_NAME="webp"
-            pm2 stop "$APP_NAME" || true
-            pm2 delete "$APP_NAME" || true
+            $PM2_BIN stop "$APP_NAME" || true
+            $PM2_BIN delete "$APP_NAME" || true
 
             mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
             cd ${{ secrets.SERVER_DEPLOY_PATH }}
@@ -41,7 +43,6 @@ jobs:
             pnpm run build || exit 1
 
             echo "🚀 새 서버 실행 중..."
-            export PATH="$HOME/.local/share/pnpm:$PATH"
-            pm2 start pnpm --name "$APP_NAME" -- start
+            $PM2_BIN start pnpm --name "$APP_NAME" -- start
 
             echo "✅ 배포 완료"
