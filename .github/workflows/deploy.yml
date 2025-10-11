@@ -19,8 +19,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            pkill -f "next" || true
-            pkill -f "node.*next" || true
+            pkill -f "next start" || true
+            pkill -f "node.*.next" || true
             pkill -f "node.*server.js" || true
             mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
             cd ${{ secrets.SERVER_DEPLOY_PATH }}
