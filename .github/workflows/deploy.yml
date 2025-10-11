@@ -19,16 +19,34 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            echo "🔍 기존 Next.js 서버 종료 중..."
             pkill -f "next start" || true
             pkill -f "node.*.next" || true
             pkill -f "node.*server.js" || true
+            sleep 1
+            echo "✅ 기존 서버 종료 완료"
+
+
             mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
             cd ${{ secrets.SERVER_DEPLOY_PATH }}
+
+            echo "📦 최신 코드 가져오는 중..."
             git clone ${{ vars.REPO_URL }} . || git pull origin main
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             export PNPM_HOME="$HOME/.local/share/pnpm"
             export PATH="$PNPM_HOME:$PATH"
+
+            echo "📦 의존성 설치 중..."
             pnpm install
+
+            echo "🏗️ 빌드 중..."
             pnpm run build
+
+            echo "🚀 새 서버 실행 중..."
             nohup pnpm run start > output.log 2>&1 &
+            sleep 1
+
+            PID=$(pgrep -f "next start" | head -n 1)
+            echo "✅ 새 서버 실행 완료 (PID: $PID)"
+
