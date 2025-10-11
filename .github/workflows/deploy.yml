@@ -37,7 +37,7 @@ jobs:
             pnpm install
 
             echo "🏗️ 빌드 중..."
-            pnpm run build
+            pnpm run build || exit 1
 
             echo "🚀 새 서버 실행 중..."
             pm2 start pnpm --name "$APP_NAME" -- start --watch
