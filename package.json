@@ -9,11 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@devup-ui/reset-css": "^1.0.11",
     "@devup-ui/react": "^1.0.20",
     "@devup-ui/components": "^0.1.23",
     "next": "15.5.3",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@devup-ui/next-plugin": "^1.0.43",
