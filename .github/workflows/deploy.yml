@@ -19,19 +19,14 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            echo "PATH: $PATH"
-            echo "HOME: $HOME"
-            export PATH="$HOME/.local/share/pnpm:$PATH"
+            export PATH="$HOME/.local/share/pnpm:$HOME/.nvm/versions/node/v22.20.0/bin:$PATH"
+
             mkdir -p ${{ secrets.SERVER_DEPLOY_PATH }}
             cd ${{ secrets.SERVER_DEPLOY_PATH }}
 
-            npm install -g pm2
-            PM2_BIN=$(which pm2)
-            echo "PM2_BIN: $PM2_BIN"
-            
             APP_NAME="webp"
-            $PM2_BIN stop "$APP_NAME" || true
-            $PM2_BIN delete "$APP_NAME" || true
+            pm2 stop "$APP_NAME" || true
+            pm2 delete "$APP_NAME" || true
 
             echo "📦 최신 코드 가져오는 중..."
             git clone ${{ vars.REPO_URL }} . || git pull origin main
@@ -47,6 +42,6 @@ jobs:
             pnpm run build || exit 1
 
             echo "🚀 새 서버 실행 중..."
-            $PM2_BIN start pnpm --name "$APP_NAME" -- start
+            pm2 start pnpm --name "$APP_NAME" -- start
 
             echo "✅ 배포 완료"
