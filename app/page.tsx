@@ -6,7 +6,7 @@ import { FileInput } from "./_components/file-input";
 import { FileList } from "./_components/file-list";
 import { Button } from "@devup-ui/components";
 import { VStack, Box } from "@devup-ui/react";
-import Link from "next/link";
+import { FileListConverted } from "./_components/file-list-converted";
 
 export default function Home() {
   return (
@@ -19,14 +19,7 @@ export default function Home() {
             <Button variant="primary" type="submit">
               변환
             </Button>
-            <FileList
-              contextValueKey="convertedFiles"
-              renderChild={({ file, key }) => (
-                <Link key={key} href={`/converted/${file}`} download>
-                  {file}
-                </Link>
-              )}
-            />
+            <FileListConverted contextValueKey="convertedFiles" />
           </VStack>
         </Form>
       </FileProvider>

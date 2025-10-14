@@ -18,14 +18,13 @@ export function FileList({
   const files = contextValue[contextValueKey].map((file) =>
     file instanceof File ? file.name : file,
   );
-  console.log(files);
   return (
     <Box
       as="ul"
       listStyle="none"
       border="1px solid $blue800"
       borderRadius="4px"
-      transition="height 1s ease-in-out"
+      transition="height 0.5s ease-in-out"
       h="0"
       selectors={{
         "&.expanded": {
