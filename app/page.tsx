@@ -23,7 +23,7 @@ export default function Home() {
             <QualityProvider>
               <Flex gap="2" alignItems="center">
                 <Text whiteSpace="nowrap">품질</Text>
-                <QualityRange />
+                <QualityRange name="quality" />
                 <Text whiteSpace="nowrap">
                   <QualityValue />
                 </Text>

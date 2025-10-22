@@ -8,7 +8,9 @@ import os from "os";
 
 export async function convertImages(formData: FormData) {
   const images = formData.getAll("image") as File[];
-  if (images.length === 0) return;
+  const quality = formData.get("quality") ?? "80";
+  // @todo error handling
+  if (images.length === 0 || isNaN(Number(quality))) return;
 
   const filenames: string[] = Array.from({ length: images.length });
 
@@ -51,7 +53,7 @@ export async function convertImages(formData: FormData) {
           const platform = os.platform();
           if (platform === "win32") {
             exec(
-              `"${cwebpPath}" -q 80 "${filepath}" -o "${webpPath}"`,
+              `"${cwebpPath}" -q ${quality} "${filepath}" -o "${webpPath}"`,
               async (error, stdout, stderr) => {
                 if (error) {
                   await logError(
@@ -69,7 +71,7 @@ export async function convertImages(formData: FormData) {
             );
           } else if (platform === "linux") {
             exec(
-              `wine "${cwebpPath}" -q 80 "${filepath}" -o "${webpPath}"`,
+              `wine "${cwebpPath}" -q ${quality} "${filepath}" -o "${webpPath}"`,
               async (error, stdout, stderr) => {
                 if (error) {
                   await logError(
