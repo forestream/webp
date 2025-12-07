@@ -9,16 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@devup-ui/reset-css": "^1.0.11",
-    "@devup-ui/react": "^1.0.20",
-    "@devup-ui/components": "^0.1.23",
+    "@devup-ui/reset-css": "^1.0.18",
+    "@devup-ui/react": "^1.0.29",
+    "@devup-ui/components": "^0.1.37",
     "next": "^16.0.7",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
-    "@devup-ui/next-plugin": "^1.0.43",
+    "@devup-ui/next-plugin": "^1.0.58",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
