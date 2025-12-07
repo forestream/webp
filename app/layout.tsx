@@ -5,10 +5,6 @@ import { globalCss } from "@devup-ui/react";
 resetCss();
 
 globalCss({
-  html: {
-    // @ts-expect-error - interpolateSize is not supported in devup-ui yet
-    interpolateSize: "allow-keywords",
-  },
   body: {
     bg: "var(--slate50)",
   },
@@ -32,6 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <style>
+          {`
+            html {
+            interpolate-size: allow-keywords
+            }
+          `}
+        </style>
+      </head>
       <body>{children}</body>
     </html>
   );
