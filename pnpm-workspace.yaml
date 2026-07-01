@@ -2,3 +2,4 @@ publicHoistPattern:
   - "eslint-plugin-react-hooks"
   - "eslint-config-next/core-web-vitals"
   - "@next/eslint-plugin-next"
+  - "@typescript-eslint/utils"

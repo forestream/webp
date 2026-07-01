@@ -14,8 +14,8 @@ import { QualityValue } from "./_components/quality-value";
 
 export default function Home() {
   return (
-    <Box as="main" p="4" minH="100dvh">
-      <FileProvider>
+    <FileProvider>
+      <Box as="main" p="4" minH="100dvh">
         <Form>
           <VStack maxW="50%" mx="auto" gap="4">
             <FileInput />
@@ -35,7 +35,7 @@ export default function Home() {
             <FileListConverted contextValueKey="convertedFiles" />
           </VStack>
         </Form>
-      </FileProvider>
-    </Box>
+      </Box>
+    </FileProvider>
   );
 }

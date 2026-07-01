@@ -9,25 +9,25 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@devup-ui/components": "^0.1.37",
-    "@devup-ui/react": "^1.0.29",
-    "@devup-ui/reset-css": "^1.0.18",
+    "@devup-ui/components": "^0.1.47",
+    "@devup-ui/react": "^1.0.37",
+    "@devup-ui/reset-css": "^1.0.24",
     "clsx": "^2.1.1",
-    "next": "^16.0.7",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
-    "@devup-ui/next-plugin": "^1.0.58",
+    "@devup-ui/next-plugin": "^1.0.78",
     "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19.2.7",
+    "@types/node": "^26",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9",
-    "eslint-config-next": "^16.0.7",
+    "eslint": "^10",
+    "eslint-config-next": "^16.2.9",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "3.6.2",
-    "typescript": "^5"
+    "eslint-plugin-prettier": "^5.5.6",
+    "prettier": "3.9.4",
+    "typescript": "^6"
   }
 }
