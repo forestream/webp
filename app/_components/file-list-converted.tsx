@@ -10,7 +10,7 @@ export function FileListConverted({
   return (
     <FileList
       contextValueKey={contextValueKey}
-      renderChild={({ file, key }) => (
+      renderChild={({ file }) => (
         <Link href={`/converted/${file}`} download>
           {file}
         </Link>

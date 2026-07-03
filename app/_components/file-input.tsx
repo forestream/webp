@@ -16,11 +16,16 @@ export function FileInput() {
       as="label"
       border="1px solid $blue800"
       borderRadius="4px"
-      _hover={{ borderColor: "$blue600", cursor: "pointer" }}
+      _hover={{
+        borderColor: "$blue600",
+        cursor: "pointer",
+        backgroundColor: "$gray200",
+      }}
       transition="all 0.1s ease-in-out"
-      minH="40px"
+      minH="120px"
       display="flex"
       alignItems="center"
+      justifyContent="center"
       p="8px"
       role="group"
     >
@@ -38,10 +43,9 @@ export function FileInput() {
         color="$blue800"
         _groupHover={{ color: "$blue600" }}
         transition="inherit"
-        fontSize="14px"
         fontWeight="bold"
       >
-        파일 선택
+        파일 업로드
       </Text>
     </Text>
   );

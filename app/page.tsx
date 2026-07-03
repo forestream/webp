@@ -11,6 +11,7 @@ import { FileListConverted } from "./_components/file-list-converted";
 import { QualityProvider } from "./_components/quality-provider";
 import { QualityRange } from "./_components/quality-range";
 import { QualityValue } from "./_components/quality-value";
+import { FileDropZone } from "./_components/file-drop-zone";
 
 export default function Home() {
   return (
@@ -18,7 +19,9 @@ export default function Home() {
       <Box as="main" p="4" minH="100dvh">
         <Form>
           <VStack maxW="50%" mx="auto" gap="4">
-            <FileInput />
+            <FileDropZone>
+              <FileInput />
+            </FileDropZone>
             <FileList contextValueKey="files" />
             <QualityProvider>
               <Flex gap="2" alignItems="center">
